@@ -10,7 +10,8 @@ ENV ADMIN_PASSWORD=admin
 COPY ./installdata /installdata 
 
 # 运行基础软件安装脚本。
-RUN /bin/bash -c "chmod -R 777 /installdata/* && /installdata/install-erpnext15.sh -qd"
+# RUN /bin/bash -c "chmod -R 777 /installdata/* && /installdata/install-erpnext15.sh -qd" 
+RUN /bin/sh -c "/installdata/install-erpnext15.sh -qd"
 
 # 切换用户
 USER frappe
