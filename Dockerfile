@@ -7,7 +7,7 @@ ENV MARIADB_ROOT_PASSWORD=Pass1234
 ENV ADMIN_PASSWORD=admin
 
 # 拷贝基础软件安装脚本
-COPY ./installdata /installdata
+COPY ./installdata /installdata 
 
 # 运行基础软件安装脚本。
 RUN /bin/bash -c "chmod -R 777 /installdata/* && /installdata/install-erpnext15.sh -qd"
@@ -18,10 +18,10 @@ WORKDIR /home/frappe/frappe-bench
 
 EXPOSE 3306 80
 
-VOLUME /home/frappe/frappe-bench/sites
-VOLUME /var/lib/mysql
+# VOLUME /home/frappe/frappe-bench/sites 
+# VOLUME /var/lib/mysql
 
 STOPSIGNAL SIGTERM
 
 ENTRYPOINT ["/bin/bash", "-c"]
-CMD ["sudo /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf"]
+CMD ["sudo /usr/bin/supervisord -n -c /etc/supervisor/supervisord.conf"] 
